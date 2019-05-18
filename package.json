@@ -1,0 +1,8 @@
+{
+  "name": "sky-map",
+  "version": "1.0.0",
+  "description": "D3 sky map",
+  "repository": "https://github.com/dbalas/sky-map.git",
+  "author": "dbalas <dbalasdev@gmail.com>",
+  "license": "MIT"
+}
