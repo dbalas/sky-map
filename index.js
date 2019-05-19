@@ -34,9 +34,13 @@ function glow(selection) {
 }
 
 function baseStar(el, r) {
-	const radius = r || currentRadius;
 	const color = 'white';
-	return el.append('circle').classed('star', true).style('fill', color).style('filter', 'url(#glow)');
+	return el
+		.append('circle')
+		.classed('star', true)
+		.style('fill', color)
+		.style('filter', 'url(#glow)')
+		.style('opacity', 0.2);
 }
 
 function star(el, x, y, r) {
@@ -97,7 +101,8 @@ function link(el, x1, y1, x2, y2) {
 		.attr('stroke-width', strokeWitdh)
 		.attr('stroke-linecap', 'round')
 		.attr('stroke-linejoin', 'round')
-		.attr('vector-effect', 'non-scaling-stroke');
+		.attr('vector-effect', 'non-scaling-stroke')
+		.style('opacity', 0.2);
 
 	if (x1 && y1 && x2 && y2) {
 		l.attr('x1', x1).attr('y1', y1).attr('x2', x2).attr('y2', y2);
@@ -179,3 +184,19 @@ const select = toolbar.append('select').classed('type', true).on('change', (e) =
 select.append('option').attr('value', '1').html('Small');
 select.append('option').attr('value', '2').html('Medium');
 select.append('option').attr('value', '3').html('Big');
+
+// Blink animation
+function blinkStar() {
+	const randomNumber = Math.round(d3.randomUniform(1, stars.length)());
+	d3
+		.select(`.star:nth-child(${randomNumber})`)
+		.transition()
+		.duration(1000)
+		.style('opacity', 1)
+		.transition()
+		.delay(1000)
+		.style('opacity', 0.2);
+}
+
+const blinkNumber = 500;
+for (let i = 1; i < blinkNumber; i++) setInterval(blinkStar, i * 100 + 2000);
