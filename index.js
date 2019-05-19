@@ -40,7 +40,7 @@ function baseStar(el, r) {
 		.classed('star', true)
 		.style('fill', color)
 		.style('filter', 'url(#glow)')
-		.style('opacity', 0.2);
+		.style('opacity', 0.1);
 }
 
 function star(el, x, y, r) {
@@ -102,7 +102,7 @@ function link(el, x1, y1, x2, y2) {
 		.attr('stroke-linecap', 'round')
 		.attr('stroke-linejoin', 'round')
 		.attr('vector-effect', 'non-scaling-stroke')
-		.style('opacity', 0.2);
+		.style('opacity', 0.1);
 
 	if (x1 && y1 && x2 && y2) {
 		l.attr('x1', x1).attr('y1', y1).attr('x2', x2).attr('y2', y2);
@@ -195,8 +195,8 @@ function blinkStar() {
 		.style('opacity', 1)
 		.transition()
 		.delay(1000)
-		.style('opacity', 0.2);
+		.style('opacity', 0.1);
 }
 
 const blinkNumber = 500;
-for (let i = 1; i < blinkNumber; i++) setInterval(blinkStar, i * 100 + 2000);
+for (let i = 1; i < blinkNumber; i++) setInterval(blinkStar, i * 300 + 2000);
